@@ -1,0 +1,207 @@
+@import "../abstracts/variables";
+@import "../utilities/mixins";
+
+.product-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    height: 100%;
+    font-family: "kalam", sans-serif;
+    margin: 0;
+
+    .content {
+        
+        @media (min-width: 768px) {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin: 10% 5%;
+        }
+        @media (min-width: 1115px) {
+            margin: 6% 2%;
+        }
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-content: center;
+            @media (min-width: 425px) {
+                margin-top: 60px;
+            }
+            @media (min-width: 768px) {
+                margin-top: 0px;
+            }
+            &__image-container {
+                max-width: 425px;
+                max-height: 318px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                position: relative; 
+                z-index: 5; 
+
+                @media (min-width: 425px) {
+                    max-width: 425px;
+                    max-height: 318px;
+                    align-self: center;
+                    border-radius: 16px;
+                }
+                @media (min-width: 768px) {
+                    max-width: 400px;
+                    max-height: 300px;
+                    margin-bottom: 30px;
+                    box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.6);
+                }
+                .gallery_ppal {
+                    width: 100%;
+                    height: 100%;
+                    position: relative; // Asegúrate de que la imagen no interfiera con el modal
+                    z-index: 5; // Menor que el z-index del modal
+
+                    @media (min-width: 425px) {
+                        border-radius: 16px;
+                    }
+                    @media (min-width: 768px) {
+
+                    }
+                }
+            }
+            &__thumbnails {
+                display: none;
+                @media (min-width: 425px) {
+                    width: 100px;
+                    height: 100px;
+                    display: flex;
+                    justify-content: center;
+                    align-self: center;
+                    gap: 10px;
+                    margin-top: 20px;
+                }
+                @media (min-width: 768px) {
+                    margin-top: 0px;
+                    width: 100%;
+                }
+                &__thumbnail {
+                    width: 100px;
+                    height: 100px;
+                    background-color: hsl(0, 0%, 100%);
+                    background-size: contain;
+                    object-position: center;
+                    border-radius: 16px;
+                    &:hover {
+                        cursor: pointer;
+                        border: 3px solid $Bright-Blue-hover;
+                    }
+                    
+                    @media (min-width: 768px) {
+                        width: 95px;
+                        height: 95px;
+                        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
+                    }
+                }
+            }
+        }.counter__container {
+                    margin-top: 40px;
+                    background-color: green;
+                }
+        .details {
+            padding: 30px 0px 0 0px;
+            margin: 0 30px;
+            @media (min-width: 425px) {
+                margin: 0 10%;
+            }
+            @media (min-width: 768px) {
+                width: 446px;
+                margin: 0 30px;
+                padding: 40px 0px;
+            }
+
+            &__category {
+                color: $Bright-Blue-hover;
+                text-transform: uppercase;
+                font-size: 0.8em;
+                letter-spacing: 1px;
+                margin-bottom: 12px;
+            }
+            &__title {
+                font-size: 1.7em;
+                margin-bottom: 16px;
+                color: $Very-Dark-Blue;
+                @media (min-width: 768px) {
+                    font-size: 2.2em;
+                    margin-bottom: 30px;
+                }
+            }
+            &__description {
+                font-size: 0.94em;
+                color: $Black;
+                line-height: 24px;
+                margin-bottom: 24px;
+                text-wrap: pretty;
+                @media (min-width: 768px) {
+                    font-size: 0.9em;
+                    margin-bottom: 30px;
+                }
+            }
+            &__range {
+                margin-right: 0px;
+                @media (min-width: 768px) {
+                    text-align: left;
+                }
+            }
+            &__price {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                margin-bottom: 24px;
+                margin-left: 50px;
+                gap: 40px;
+                
+                p {
+                    font-weight: bold;
+                    font-size: x-large;
+                }
+                @media (min-width: 425px) {
+                    margin-left: 20%;
+                    margin-right: 10%;
+                }
+                @media (min-width: 768px) {
+                    margin-left: 10%;
+                    margin-right: 5%;
+                    gap: 80px;
+                }
+                @media (min-width: 1115px) {
+                    margin-left: 20%;
+                    margin-right: 10%;
+                }
+            }
+        }
+    }
+}
+
+.slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.1);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 5;
+    font-size: 1.5rem;
+}
+
+.prev-button {
+    left: 10px;
+}
+
+.next-button {
+    right: 10px;
+}
+
+.gallery__thumbnails__thumbnail.active {
+    border: 2px solid #007bff;
+}

@@ -1,0 +1,111 @@
+.card__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    width: 100%;
+    a {
+        text-decoration: none; 
+        color: inherit; 
+    }
+    
+    .card__container {
+        background-color: $white;
+        border: 1px solid $Grayish-blue;
+        border-radius: 0.75rem;
+        color: $black;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        text-align: start;
+        width: 200px; 
+        height: 260px; 
+        margin: 1rem;
+
+        @media (max-width: 375px) {
+            width: 145px;
+            height: auto; 
+            margin: 0.3rem;
+            margin-top: 10px;
+        }
+
+        .card__data {
+            display: flex;
+            flex-direction: column;
+            padding: 0 ;
+            text-align: center;
+
+            img {
+                width: 100%; 
+                height: auto; 
+                max-height: 133px;
+                border-radius: 0.75rem 0.75rem 0 0;
+            }
+
+            h2 {
+                padding: 0;
+                margin: 5px 0 0 0;
+                color: $Very-Dark-Blue;
+            }
+
+            .category {
+                margin-bottom: 0px;
+                margin-top: 0px;
+                font-size: small;
+
+                p {
+                    color: $Very-Dark-Blue;
+                    margin: 5px 5px;
+                    font-weight: bold;
+                    text-align: left;
+                }
+
+                span {
+                    color: $Bright-Blue-hover;
+                    font-weight: lighter;
+                }
+            }
+
+                     
+                .precio {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content:space-around;
+                    margin-left: 20px;
+                    p {
+                        margin: 0px 10px 0px 10px;
+                        font-size: large;
+                        text-align: right;
+                        justify-content: center;
+                        align-self: center;
+                   }
+                            }
+                .shortDesc {
+                    padding: 0px;
+                    margin: 0 12px 10px 12px;
+                    white-space: wrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    line-height: 20px;
+                    height: 40px;
+                    width: 180px;
+                    text-align: center;
+
+                    p {
+                        font-size: small;
+                        color: $Very-Dark-Blue;
+                        margin: 0;
+                        font-weight: bold;
+                    }
+
+                    span {
+                        color: $black;
+                        font-weight: lighter;
+                    }
+                
+            }
+        }
+        
+    }
+}

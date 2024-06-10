@@ -1,0 +1,31 @@
+.counter__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 0;
+    margin: 10px 0;
+    background-color: red;
+    
+    .counter__count-text {
+        margin: 0 10px 0px 10px;
+        font-size: 1rem;
+    }
+      
+    .counter__btn {
+        background-color: $Bright-Blue-hover;
+        border: none;
+        border-radius: 0.1rem;
+        color: $white;
+        font-size: 0.75rem;
+        height: 1.2rem;
+        width: 1.4rem;
+        &:disabled {
+            background-color: lighten($Bright-Blue-hover, 20%);
+
+        }
+        &:hover:not([disabled]) {
+            background-color: lighten($color:$Very-Dark-Blue, $amount: 20);
+        }
+    }
+}
+  

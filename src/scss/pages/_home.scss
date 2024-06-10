@@ -1,0 +1,23 @@
+.home {
+    &__title {
+        display: flex;
+        justify-content: center;
+        padding: 20px 0 0px 0;
+        text-decoration: none;
+        text-align: center;
+        h2 {
+            align-self: center;
+            color: $Very-Dark-Blue;
+            font-family: "matura", sans-serif;
+            font-weight: 400;
+            text-decoration: underline;
+            width: 210px;
+            }
+    }
+    &__container {
+        min-height: 400px;
+        padding-bottom: 10%;
+  
+    }
+  }
+  
