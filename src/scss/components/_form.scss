@@ -117,7 +117,7 @@
 
 .form__button {
     align-items: flex-end;
-    font-size: small;
+    font-size: 12px;
     width: 7rem;
     padding: 10px;
     background-color: lighten(dodgerblue, 20%);
@@ -126,9 +126,7 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    @media (max-width: 375px) {
-        font-size: 12px;
-    }
+    
     &:hover {
         background-color: #007bff;
     }
