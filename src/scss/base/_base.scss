@@ -1,10 +1,15 @@
-* {
-    font-family: "kalam", sans-serif;
-}
-html {
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    border: 0;
+    font-family: "kalam", sans-serif;
+    font: inherit;
+    vertical-align: baseline;
 }
+
 body {
     margin: 0;
     padding: 0;
