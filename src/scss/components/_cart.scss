@@ -44,6 +44,8 @@
                 align-items: center;
                 padding: 0;
                 border-bottom: 1px solid hsl(220deg, 14%, 75%);
+                font-family: "kalam", sans-serif;
+
             }
 
             .modal__product-image {
@@ -65,7 +67,7 @@
                         display: flex;
                         justify-content: space-between;
                         width: 100%;
-                        font-size: 18px;
+                        font-size: 16px;
                         .product-name {
                             font-weight: bold;
                             align-self: flex-start;
@@ -97,7 +99,6 @@
                         p {
                             font-style: italic;
                             margin: 8px 0 8px 0;
-                            color: $Very-Dark-Blue;
                             span {
                                 font-weight: lighter;
                                 color: $black;

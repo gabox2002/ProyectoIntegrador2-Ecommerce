@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { getProducts } from "../util/api";
 import Counter from "../components/Counter";
+import { CartContext } from "../context/CartContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import ScrollToTopOnMount from '../components/ScrollToTopOnMount';
@@ -10,15 +11,18 @@ import { Link } from "react-router-dom"
 
 function Detail() {
     const { id } = useParams();
-    const [productData, setProductData] = useState(null);
+    const [movieData, setProduct] = useState(null);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const { addMovie, removeMovie, moviesCartList } = useContext(CartContext);
 
     useEffect(() => {
-        getProducts()
-            .then((products) => {
-                const productById = products.find((product) => product._id === id);
+        getProducts(id)
+            .then((movieData) => {
+                const productById = movieData.find(
+                    (movieData) => movieData.id === id
+                );
                 if (productById) {
-                    setProductData(productById);
+                    setProduct(productById);
                 } else {
                     console.error(`Product with ID ${id} not found`);
                 }
@@ -29,7 +33,6 @@ function Detail() {
     const changeImage = (index) => {
         setCurrentImageIndex(index);
     };
-
     const nextImage = () => {
         setCurrentImageIndex((prevIndex) =>
             prevIndex === 3 ? 0 : prevIndex + 1
@@ -41,14 +44,12 @@ function Detail() {
             prevIndex === 0 ? 3 : prevIndex - 1
         );
     };
-
-    if (!productData) {
+    if (!movieData) {
         return <div>Cargando...</div>;
     }
 
     return (
-       
-        <div className="product-container"> 
+        <div className="product-container">
             <div className='product__title'>
                <Link to="/"><Text renderAs="h4" content="Lista de productos >" className="title"/></Link> 
             </div>
@@ -57,8 +58,8 @@ function Detail() {
                     <div className="gallery__image-container">
                         <img
                             className="gallery_ppal"
-                            src={productData[`img${currentImageIndex + 1}`]}
-                            alt={productData.name}
+                            src={movieData[`img${currentImageIndex + 1}`]}
+                            alt={movieData.name}
                         />
                         <button onClick={prevImage} className="slider-button prev-button">
                             <FontAwesomeIcon icon={faChevronLeft} />
@@ -68,12 +69,12 @@ function Detail() {
                         </button>
                     </div>
                     <div className="gallery__thumbnails">
-                        {[1, 2, 3, 4].map((index) => (
+                    {[1, 2, 3, 4].map((index) => (
                             <img
                                 key={index}
                                 className={`gallery__thumbnails__thumbnail ${currentImageIndex === index - 1 ? 'active' : ''}`}
-                                src={productData[`img${index}`]}
-                                alt={productData.name}
+                                src={movieData[`img${index}`]}
+                                alt={movieData.name}
                                 onClick={() => changeImage(index - 1)}
                             />
                         ))}
@@ -82,16 +83,25 @@ function Detail() {
 
                 <div className="details">
                     <h2 className="details__category">
-                        Categoría: {productData.category}
+                        Categoría: {movieData.category}
                     </h2>
-                    <h2 className="details__title">{productData.name}</h2>
-                    <p className="details__description">{productData.longDesc}</p>
+                    <h2 className="details__title">{movieData.name}</h2>
+                    <p className="details__description">{movieData.longDesc}</p>
                     <p className="details__range">
-                        Rango de edad: {productData.ageFrom}-{productData.ageTo}
+                        Rango de edad: {movieData.ageFrom}-{movieData.ageTo}
                     </p>
                     <div className="details__price">
-                        <Counter _id={id} />
-                        <p>${productData.price}</p>
+                        <Counter
+                            id={id}
+                            movieData={movieData}
+                            initialValue={
+                                moviesCartList.find((item) => item.id === id)
+                                    ?.quantity || 0
+                            }
+                            addMovie={addMovie}
+                            removeMovie={removeMovie}
+                        />
+                        <p>${movieData.price}</p>
                     </div>
                 </div>
             </div>
